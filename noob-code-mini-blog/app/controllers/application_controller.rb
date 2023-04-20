@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permited_parameters, if: :devise_controller?
+
+  include DeviseTokenAuth::Concerns::SetUserByToken
   include ErrorsHandler::Handler
   include ActionController::MimeResponds
   include ActionController::Serialization
@@ -12,5 +15,9 @@ class ApplicationController < ActionController::Base
       total_pages: object.total_pages,
       total_count: object.total_count
     }
+  end
+
+  def configure_permited_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:kind, :name])
   end
 end

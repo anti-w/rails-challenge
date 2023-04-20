@@ -36,6 +36,12 @@ gem 'ransack', '~> 3.0'
 # Kaminari
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
 
+# Authentication
+gem 'devise_token_auth'
+
+# Able cors
+gem 'rack-cors'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
