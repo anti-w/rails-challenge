@@ -4,3 +4,4 @@ pt-BR:
       post:
         id: "Identificador do commentário"
         comment: "Comentário"
+        user: "Usuário"

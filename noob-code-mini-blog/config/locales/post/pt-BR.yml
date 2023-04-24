@@ -5,3 +5,6 @@ pt-BR:
         id: "Identificador da postagem"
         title: "Título"
         description: "Descrição"
+        commment: "Comentário"
+        user_id: "Id do usuário"
+        category_id: "Id da categoria"
