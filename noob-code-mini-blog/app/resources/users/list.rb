@@ -1,6 +1,6 @@
 class Users::List
   attr_accessor :params
-  
+
   def initialize(params)
     @params = params
   end

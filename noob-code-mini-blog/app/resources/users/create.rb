@@ -13,7 +13,7 @@ class Users::Create
   private
 
   def mount_params
-    { 
+    {
       name: params[:name],
       email: params[:email],
       password: params[:password],

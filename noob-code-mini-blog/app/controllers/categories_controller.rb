@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
-
   # GET /categories
   def index
     categories = Categories::List.new(params).execute
