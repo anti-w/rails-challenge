@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
-  include DeviseTokenAuth::Concerns::User
+  validates :name, :kind, :password, :password_confirmation, presence: true, on: :create
+  validates :password, length: { minimum: 8 }, on: :create
 
-  validates :name, :kind, :password, :password_confirmation, presence: true
-  validates :password, length: { minimum: 8 }
+  include DeviseTokenAuth::Concerns::User
 
   has_many :posts, dependent: :delete_all
   has_many :comments, dependent: :delete_all
