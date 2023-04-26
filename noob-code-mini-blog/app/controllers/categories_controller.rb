@@ -9,6 +9,10 @@ class CategoriesController < ApplicationController
     render json: categories, meta: pagination(categories), each_serializer: CategorySerializer, status: :ok
   end
 
+  def show
+    render json: @category, serializer: CategorySerializer, list_posts: true, status: :ok
+  end
+
 
   # POST /categories
   def create
