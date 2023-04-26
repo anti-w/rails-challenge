@@ -1,13 +1,13 @@
 class Comments::Create
-
   attr_accessor :params, :post, :user
 
-  def initialize(params)
+  def initialize(params, user)
+    
+    @user = user
+    
     @params = params
 
     @post = find_post!
-
-    @user = current_user
   end
 
   def execute
