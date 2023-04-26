@@ -13,7 +13,6 @@ class CategoriesController < ApplicationController
     render json: @category, serializer: CategorySerializer, list_posts: true, status: :ok
   end
 
-
   # POST /categories
   def create
     @category = Categories::Create.new(category_params).execute
@@ -31,7 +30,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   def destroy
     @category.destroy!
-   
+
     head :no_content
   end
 

@@ -1,9 +1,10 @@
 class Posts::Create
 
-  attr_accessor :params
+  attr_accessor :params, :user
 
-  def initialize(params)
+  def initialize(params, user)
     @params = params
+    @user = user
   end
 
   def execute
@@ -21,7 +22,7 @@ class Posts::Create
 
       category_id: params[:category_id],
 
-      user_id: params[:user_id]
+      user: user
 
     }
   end

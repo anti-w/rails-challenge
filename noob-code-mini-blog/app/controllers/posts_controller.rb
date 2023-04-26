@@ -14,12 +14,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Posts::Create.new(post_params).execute
+    @post = Posts::Create.new(post_params, current_user).execute
 
     render json: @post, serializer: PostSerializer, status: :created
   end
 
   def update
+    authorize @post
+
     @post.update!(post_params)
 
     render json: @post, serializer: PostSerializer, status: :ok

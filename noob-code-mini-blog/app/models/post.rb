@@ -2,7 +2,7 @@ class Post < ApplicationRecord
 
   include PostQuery
 
-  validates :title, :description, :category_id, :user_id, presence: true
+  validates :title, :description, :category_id, presence: true
 
   validates :title, length: { minimum: 5 }
 
