@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[show edit update destroy]
+  before_action :set_category, only: %i[show update destroy]
 
   # GET /categories
   def index
@@ -14,9 +14,8 @@ class CategoriesController < ApplicationController
 
   # POST /categories
   def create
-    @category = Categories::Create.new(category_params).execute
-    authorize @category
-
+  
+    @category = Categories::Create.new(category_params).execute if authorize Category
 
     render json: @category, serializer: CategorySerializer, status: :created
   end

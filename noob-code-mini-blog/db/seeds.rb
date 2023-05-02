@@ -4,16 +4,16 @@ games_category = Category.find_or_create_by!(name: 'Games')
 books_category = Category.find_or_create_by!(name: 'Books')
 movies_category = Category.find_or_create_by!(name: 'Movies')
 
-admin = User.find_or_create_by!(name: 'Admin Boladão', password: '123456678', password_confirmation: '123456678',
+admin = User.create(name: 'Admin Boladão', password: '123456678', password_confirmation: '123456678',
 kind: 'AD', email: 'adminemail@admin.com')
 
-jornalist = User.find_or_create_by!(name: 'Jornalista curioso', password: 'password', password_confirmation: 'password',
+jornalist = User.create(name: 'Jornalista curioso', password: 'password', password_confirmation: 'password',
 kind: 'JO', email: 'jornalistemail@jornalist.com')
 
-villain = User.find_or_create_by!(name: Faker::DcComics.villain, password: 'password', password_confirmation: 'password',
+villain = User.create(name: Faker::DcComics.villain, password: 'password', password_confirmation: 'password',
 kind: 'JO', email: 'villain@jornalist.com')
 
-hero = User.find_or_create_by!(name: Faker::DcComics.hero, password: 'password', password_confirmation: 'password',
+hero = User.create(name: Faker::DcComics.hero, password: 'password', password_confirmation: 'password',
     kind: 'JO', email: 'hero@jornalist.com')
 
 games_post = Post.find_or_create_by!(title: Faker::Esport.game,

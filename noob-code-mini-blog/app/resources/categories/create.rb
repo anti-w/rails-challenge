@@ -7,7 +7,7 @@ class Categories::Create
   end
 
   def execute
-    Category.find_or_create_by!(mount_params)
+    Category.create!(mount_params)
   end
 
   private
