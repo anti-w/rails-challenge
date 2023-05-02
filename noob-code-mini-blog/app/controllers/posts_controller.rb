@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show update destroy]
 
   def index
     posts = Posts::List.new(params).execute
@@ -19,15 +19,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    authorize @post
+    updated_post = Posts::Update.new(@post, post_params).execute
 
-    @post.update!(post_params)
-
-    render json: @post, serializer: PostSerializer, status: :ok
+    render json: updated_post, serializer: PostSerializer, status: :ok
   end
 
   def destroy
-    @post.destroy!
+    Posts::Destroy.new(@post).execute
 
     head :no_content
   end
@@ -38,6 +36,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   # Only allow a list of trusted parameters through.

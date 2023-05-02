@@ -8,11 +8,16 @@ module ErrorsHandler
         rescue_from ActiveRecord::NotNullViolation, with: :json_not_null_violation_error
         rescue_from ActiveRecord::RecordNotDestroyed, with: :json_record_not_destroyed
         rescue_from ActiveRecord::InvalidForeignKey, with: :json_invalid_foreign_key
+        rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
         rescue_from CustomException, with: :json_custom_error
       end
     end
 
     protected
+
+    def user_not_authorized
+      render json: { error: { message: I18n.t('errors.messages.not_authorized') } }, status: :forbidden
+    end
 
     def json_not_found_message(exception)
       render json: {

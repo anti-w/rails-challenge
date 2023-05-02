@@ -1,12 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
-  protect_from_forgery with: :null_session
-
-  skip_before_action :verify_authenticity_token
-  before_action :configure_permited_parameters, if: :devise_controller?
-  before_action :authenticate_user!, except: %i[sign_in create]
-
   include DeviseTokenAuth::Concerns::SetUserByToken
 
   include ErrorsHandler::Handler
@@ -14,6 +8,12 @@ class ApplicationController < ActionController::Base
   include ActionController::MimeResponds
 
   include ActionController::Serialization
+
+  protect_from_forgery with: :null_session
+
+  skip_before_action :verify_authenticity_token
+  before_action :configure_permited_parameters, if: :devise_controller?
+  before_action :authenticate_user!, except: %i[sign_in create]
 
   def pagination(object)
     {
@@ -32,7 +32,6 @@ class ApplicationController < ActionController::Base
   def configure_permited_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:kind, :name])
     devise_parameter_sanitizer.permit(:account_update, keys: [:kind, :name])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
 
 end

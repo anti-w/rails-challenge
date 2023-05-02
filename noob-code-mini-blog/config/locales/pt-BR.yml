@@ -78,6 +78,7 @@ pt-BR:
     format: ! "%{attribute} %{message}"
     messages:
       not_found: "não encontrado(a)"
+      not_authorized: "não autorizado"
       taken: "já está em uso"
       invalid: "formato inválido"
       required: "não pode ficar em branco"

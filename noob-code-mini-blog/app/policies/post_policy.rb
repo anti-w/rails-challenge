@@ -15,6 +15,6 @@ class PostPolicy < ApplicationPolicy
   end
 
   def verify_user?
-    user.kind? == 'AD' or user.id == post.user.id
+    user.kind == 'AD' or user.id == post.user.id
   end
 end

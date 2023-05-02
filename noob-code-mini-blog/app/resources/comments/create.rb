@@ -3,9 +3,7 @@ class Comments::Create
 
   def initialize(params, user)
     @user = user
-
     @params = params
-
     @post = find_post!
   end
 
@@ -21,13 +19,9 @@ class Comments::Create
 
   def mount_params
     {
-
       comment: params[:comment],
-
       post: post,
-
       user: user
-
     }
   end
 
