@@ -4,7 +4,7 @@ games_category = Category.find_or_create_by!(name: 'Games')
 books_category = Category.find_or_create_by!(name: 'Books')
 movies_category = Category.find_or_create_by!(name: 'Movies')
 
-admin = User.create(name: 'Admin Boladão', password: '123456678', password_confirmation: '123456678',
+User.create(name: 'Admin Boladão', password: '123456678', password_confirmation: '123456678',
 kind: 'AD', email: 'adminemail@admin.com')
 
 jornalist = User.create(name: 'Jornalista curioso', password: 'password', password_confirmation: 'password',
